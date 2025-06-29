@@ -1,0 +1,45 @@
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling on the whole page */
+  }
+  .becomeAgentBtttonSlider {
+    background-color: #77a32f !important;
+    border-radius: 3px !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    line-height: 21px !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    color: #ffff !important;
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem  !important;
+    position: relative  ;
+    left: 30%;
+    max-width:50% ;
+  }
+  .sliderImage {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+  }
+  
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .slick-list {
+    width: 100vw; /* Ensures the slider is constrained to the viewport width */
+    height: 100vh; /* Ensures the slider fills the viewport height */
+  }
+  
+  .slick-track {
+    width: 100vw; /* Prevents the slider track from expanding horizontally */
+    height: 100vh; /* Ensures the height is consistent with the viewport */
+  }
+  
