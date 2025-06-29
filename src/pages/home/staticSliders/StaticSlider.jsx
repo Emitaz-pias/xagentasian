@@ -28,7 +28,7 @@ const StaticSlider = () => {
         <Box sx={{display:'flex' ,justifyContent:'space-around',flexWrap:'wrap',zIndex:5,transform:{md:'translate(0%,-28%)',xs:'translate(0%,-6%)',sm:'translate(0%,-7%)'}}}>
             {slidesData.map((slide, index) => (
                 <div key={index}>
-                    <img src={slide.image} alt={`1xbetsupport ${index + 1}`} />
+                    <img src={slide.image} alt={`1xbetasian ${index + 1}`} />
                     <p style={{fontWeight:'bold'}}>{slide.text}</p>
                 </div>
             ))}

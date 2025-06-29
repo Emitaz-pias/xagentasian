@@ -154,7 +154,7 @@ const scrollToViewAndCloseMenu = (scrollToFunction, onCloseFunction) => {
               component="div"
             >
               <Link to='/'>
-            <Box component={'img'} sx={{ margin:'0.4em',width: { xs: '2em', lg: '3.2em' }, }} src={logo} alt="1xbetsupport.com logo" />
+            <Box component={'img'} sx={{ margin:'0.4em',width: { xs: '2em', lg: '3.2em' }, }} src={logo} alt="1xbetasian.com logo" />
               </Link>
             </Typography>
             <Box sx={{display: { xs: 'none', md: 'flex', color: 'grey'},order:{lg:2} }}>

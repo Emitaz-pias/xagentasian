@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://1xbetagentsupport.com/sitemap.xml
+Sitemap: https://1xbetasian.com/sitemap.xml

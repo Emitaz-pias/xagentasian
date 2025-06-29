@@ -57,7 +57,7 @@ const Footer = () => {
            {/* Copyright & CTA */}
         <Grid container spacing={2} justifyContent={{ xs: 'center',sm:'center', md: 'flex-end' }}>
           <Box fontSize='0.7em' component="small">
-            Copyright © 2007-2025 «1xbet. All rights reserved and protected by law.
+            Copyright © 2007-2025 1xbetasian. All rights reserved and protected by law.
           </Box>
         </Grid>
         </Grid>

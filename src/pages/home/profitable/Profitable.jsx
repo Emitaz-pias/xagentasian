@@ -42,7 +42,7 @@ const Profitable = () => {
       <Grid container alignItems={'center'} justifyContent={{md:'space-between',xs:'center'}}>
         <Grid size={{ xs:10, sm: 12, md: 6 }}>{profitableSlidesData.map((slide, index) => (
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: { sm: 'wrap', xs: 'wrap', md: 'nowrap', lg: 'nowrap' } }} key={index} >
-            <Box component={'img'} src={slide.icon} alt={`1xbetsupport ${index + 1}`} />
+            <Box component={'img'} src={slide.icon} alt={`1xbetasian ${index + 1}`} />
             <Box  marginLeft={{md:'1em'}} textAlign={{xs:'center',md:'left'}} ><Box component={'h3'}>{slide.header}</Box><Box component={'p'}>{slide.paragraph}</Box></Box>
           </Box>
         ))}</Grid>

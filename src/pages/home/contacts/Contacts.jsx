@@ -90,7 +90,7 @@ const Contacts = () => {
               <Box display="flex" alignItems="center" my={2}>
                 <img
                   src={globe}
-                  alt="1xbetsupport globe logo"
+                  alt="1xbetasian globe logo"
                   width={'10%'}
                 />
                 <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
@@ -100,11 +100,11 @@ const Contacts = () => {
               <Box display="flex" alignItems="center" my={2}>
                 <img
                   src={mail}
-                  alt="1xbetsupport email logo"
+                  alt="1xbetasian email logo"
                   width={'8%'}
                 />
                 <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
-                  manager@1xbetsupport.com
+                  agentmanager@1xbetasian.com
                 </Typography>
               </Box>
             </Box>
