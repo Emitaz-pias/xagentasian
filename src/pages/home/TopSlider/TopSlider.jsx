@@ -61,8 +61,8 @@ const slidesData = [
     <Box sx={sliderWrapperStyles}>
       {/* Static Text Overlay */}
       <Box sx={staticTextStyles}>
-        <Box component={"h1"} textAlign={'center'}>EARN ONLINE WITH</Box>
-        <Box component={"h2"}>1XBET AGENT</Box>              
+        <Box component={"h1"} textAlign={'center'}>EARN ONLINE WITH 1XBET</Box>
+        <Box component={"h2"}>AND BECOME AN AGENT ACCOUNT HOLDER</Box>              
         <Box component={"p"} sx={{fontSize:{md:'1.5rem'}}}>
           Become an agent, accept money, top up your account and draw money for players – 
           or create your own agent network and get a commission.
