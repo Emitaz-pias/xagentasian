@@ -104,7 +104,7 @@ const Contacts = () => {
                   width={'8%'}
                 />
                 <Typography variant="p" fontWeight={'bold'} ml={2} color="white">
-                  recruitment@1xbetasian.com
+                  recruitment@1xbet-asian.com
                 </Typography>
               </Box>
             </Box>
