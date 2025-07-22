@@ -25,7 +25,7 @@ const StaticSlider = () => {
         }
     ];
     return (
-        <Box sx={{display:'flex' ,justifyContent:'space-around',flexWrap:'wrap',zIndex:5,transform:{md:'translate(0%,-28%)',xs:'translate(0%,-6%)',sm:'translate(0%,-7%)'}}}>
+        <Box marginTop={{sm:'1em',xs:'3em'}} sx={{display:'flex',justifyContent:'space-around',flexWrap:'wrap',zIndex:5,transform:{md:'translate(0%,-28%)',xs:'translate(0%,-6%)',sm:'translate(0%,-7%)'}}}>
             {slidesData.map((slide, index) => (
                 <div key={index}>
                     <img src={slide.image} alt={`1xbetasian ${index + 1}`} />

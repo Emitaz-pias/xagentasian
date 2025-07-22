@@ -68,11 +68,11 @@ const Navbar = (props) => {
   const [openLogin, setOpenLogin] = useState(false);
 
   // Open login modal only if NOT logged in
-  const handleLoginOpen = () => {
-    if (!userId) {
-      setOpenLogin(true);
-    }
-  };
+  // const handleLoginOpen = () => {
+  //   if (!userId) {
+  //     setOpenLogin(true);
+  //   }
+  // };
   const handleAvatarClick = () => {
   setOpenLogin(true);
 };
@@ -120,24 +120,24 @@ const Navbar = (props) => {
   };
 
   // LOGIN submit handler (dummy example)
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    // Normally validate username/password here
-    // For now just set dummy userId
-    const dummyId = username || 'user-123456';
-    localStorage.setItem('userId', dummyId);
-    setUserId(dummyId);
-    setOpenLogin(false);
-    setUsername('');
-    setPassword('');
-  };
+  // const handleLoginSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Normally validate username/password here
+  //   // For now just set dummy userId
+  //   const dummyId = username || 'user-123456';
+  //   localStorage.setItem('userId', dummyId);
+  //   setUserId(dummyId);
+  //   setOpenLogin(false);
+  //   setUsername('');
+  //   setPassword('');
+  // };
 
   // LOGOUT handler
-  const handleLogout = () => {
-    localStorage.removeItem('userId');
-    setUserId(null);
-    setOpenLogin(false);
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('userId');
+  //   setUserId(null);
+  //   setOpenLogin(false);
+  // };
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -145,10 +145,11 @@ const Navbar = (props) => {
       fullScreen
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
+      
       PaperProps={{
         style: {
           background: '#212121',
-          color: 'white',
+          color: 'white',        
         },
       }}
     >
@@ -158,17 +159,20 @@ const Navbar = (props) => {
         </Box>
       </DialogTitle>
       <DialogContent style={{ marginTop: '5em' }}>
-        <MenuItem>
-          <IconButton onClick={handleAvatarClick}>
+        <MenuItem  sx={{ padding: '1em 0 0 5em' }}>
+        <Box display="flex" flexDirection="column" alignItems="center">
+            <IconButton onClick={handleAvatarClick}>
             <Avatar sx={{ bgcolor: '#fff' }}>
               <AccountCircleIcon sx={{ color: '#0d1425' }} />
             </Avatar>
           </IconButton>
           {userId && (
-            <Typography sx={{ color: 'white', marginLeft: '0.5em', fontSize: '0.9em' }}>
+            <Typography sx={{ color: 'white', fontSize: '0.9em' }}>
               {userId.slice(0, 6)}...
             </Typography>
           )}
+        </Box>
+        
         </MenuItem>
         <MenuItem
           sx={{ padding: '1em 0 0 5em' }}

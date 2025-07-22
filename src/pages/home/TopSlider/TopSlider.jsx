@@ -71,6 +71,10 @@ const slidesData = [
         component={'button'}
         className="becomeAgentBtttonSlider"     
         onClick={handleOpenModal}
+        maxWidth={{md:'25%'}}
+        position={{md:'relative'}}
+        left={{md:'39%'}}
+        
         >
           {"BECOME AN AGENT"}
         </Box>

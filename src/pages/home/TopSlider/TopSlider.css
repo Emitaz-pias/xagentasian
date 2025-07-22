@@ -15,10 +15,10 @@
     color: #ffff !important;
     border: none;
     border-radius: 0.2rem;
-    padding: 0.8rem  !important;
+    padding: -0.8rem   !important;
     position: relative  ;
-    left: 30%;
-    max-width:50% ;
+   
+   
   }
   .sliderImage {
     width: 100vw;
