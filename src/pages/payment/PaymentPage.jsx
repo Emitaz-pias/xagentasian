@@ -48,22 +48,23 @@ const PayementPage = () => {
   };
 
   return (
-    <Container textAlign="center" height="80vh">
+    <Container textAlign="center" height="100vh">
       <Navbar />
 
       {isLoggedIn ? (
         <Box
           sx={{
-            backgroundColor: "gray",
+            backgroundColor: "grey",
             padding: "0.5em",
             borderRadius: "0.3em",
+            marginTop: "2em",
           }}
         >
           <Box
             textAlign={"center"}
             onClick={() => setReveal(!reveal)}
             sx={{ cursor: "pointer", textDecoration: "underline" }}
-            component={"h5"}
+            component={"h4"}
             color="blue"
           >
             Click To Reveal Wallets
