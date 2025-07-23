@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -22,6 +22,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { AuthContext } from "../../components/authContext/AuthContext";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -45,15 +46,16 @@ const Navbar = (props) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const [userId, setUserId] = useState(null);
-
+const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
   // Controlled inputs for login form
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  ///
+  
   const users = [
-  { username: 'pias', password: 'pass' },
+  { username: 'pias', password: '11' },
+  { username: 'mahmud', password: '22' },
+  { username: 'jane', password: 'doe' },
  
 ];
 
@@ -67,7 +69,7 @@ const Navbar = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
 
-  // Open login modal only if NOT logged in
+  
   // const handleLoginOpen = () => {
   //   if (!userId) {
   //     setOpenLogin(true);
@@ -119,7 +121,6 @@ const Navbar = (props) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  // LOGIN submit handler (dummy example)
   // const handleLoginSubmit = (e) => {
   //   e.preventDefault();
   //   // Normally validate username/password here
@@ -206,9 +207,12 @@ const Navbar = (props) => {
         >
           <Link className="link-style">{'Contacts'}</Link>
         </MenuItem>
+         {isLoggedIn&&  <MenuItem sx={{ padding: '1em 0 0 5em' }}><Link to='/payment'  className="link-style">{'Payment'}</Link></MenuItem>}
         <MenuItem className="becomeAgentBttton" onClick={handleOpenModal}>
           {'BECOME AN AGENT'}
         </MenuItem>
+       
+       
       </DialogContent>
     </Dialog>
   );
@@ -268,10 +272,12 @@ const Navbar = (props) => {
                 <Link className="link-style" onClick={scrollToContact}>
                   Contacts
                 </Link>
+                 {isLoggedIn&&  <MenuItem sx={{ padding: '0em 0 0 1em' }}><Link to='/payment' className="link-style">{'Payment'}</Link></MenuItem>}
               </MenuItem>
               <MenuItem className="becomeAgentBttton" sx={{ marginLeft: '4.5em', marginTop: '1em' }} onClick={handleOpenModal}>
                 {'BECOME AN AGENT'}
               </MenuItem>
+
               <MenuItem>
                 <Box display="flex" flexDirection="column" alignItems="center">
                   <IconButton onClick={handleAvatarClick}>
@@ -308,7 +314,7 @@ const Navbar = (props) => {
           {userId}
         </Typography>
         <Button variant="contained" color="error" onClick={() => {
-          localStorage.removeItem('userId');
+          logout();
           setUserId(null);
           setOpenLogin(false);
         }}>
