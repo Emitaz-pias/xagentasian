@@ -3,7 +3,10 @@ import React from "react";
 import { AppBar, Toolbar, Box, IconButton } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import logo from '../../images/logo.png'
+import { Link } from "react-router-dom";
 const PaymentNavbar = () => {
+
+
   return (
     <AppBar
       position="static"
@@ -21,8 +24,9 @@ const PaymentNavbar = () => {
         }}
       >
         {/* Logo Section */}
-        <Box component="img" src={logo} alt="Logo" sx={{ width: 100,backgroundColor:'#3e718d', padding:'0.5em',}}/>
-
+        <Link to="/">
+        <Box component="img" src={logo} alt="Logo" sx={{ width: 100, backgroundColor: '#3e718d', padding: '0.5em', }} />
+        </Link>
         {/* Notification Icon */}
         <IconButton
           sx={{ color: "#3c76d2" }}

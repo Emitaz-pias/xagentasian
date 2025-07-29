@@ -329,6 +329,8 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
       </DialogTitle>
       <DialogContent>
        <Box
+       maxWidth={{xs:'70vw',sm:'70vw'}}
+       overflow={'hidden'}
   component="form"
   onSubmit={(e) => {
     e.preventDefault();

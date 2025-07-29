@@ -49,7 +49,7 @@ const PayementPage = () => {
 
   return (
     <Container textAlign="center" height="100vh">
-      <Navbar />
+     <PaymentNavbar />
 
       {isLoggedIn ? (
         <Box

@@ -63,7 +63,7 @@ const Footer = () => {
         </Grid>
        
         <Grid size={{xs:10,sm:12,md:4,lg:4}}>
-        <Button className="becomeAgentBttton" sx={{marginLeft:{md:'4.5em',xs:'4.2em',sm:'4.4em'},marginTop:{sm:'1em',xs:'1em',md:'0'}}} onClick={handleOpenModal} > {'BECOME AN AGENT'}</Button>              
+        <Button className="becomeAgentBttton" sx={{marginLeft:{md:'1.5em',xs:'2.2em',sm:'2.4em'},marginTop:{sm:'1em',xs:'1em',md:'0'}}} onClick={handleOpenModal} > {'BECOME AN AGENT'}</Button>              
 
         </Grid>
       </Grid>
