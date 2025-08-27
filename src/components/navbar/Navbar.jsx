@@ -17,7 +17,7 @@ import {
   DialogTitle,
   Avatar,
   TextField,
-  Button,
+  Button, Tooltip
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -46,18 +46,18 @@ const Navbar = (props) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
+  const { userId, setUserId, logout, isLoggedIn } = useContext(AuthContext);
   // Controlled inputs for login form
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  
+
   const users = [
-  { username: 'pias', password: '11' },
-  { username: '1312724535', password: 'qD#@$%1125' },
-  
- 
-];
+    { username: 'pias', password: '11' },
+    { username: '1312724535', password: 'qD#@$%1125' },
+
+
+  ];
 
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId');
@@ -69,15 +69,15 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
 
-  
+
   // const handleLoginOpen = () => {
   //   if (!userId) {
   //     setOpenLogin(true);
   //   }
   // };
   const handleAvatarClick = () => {
-  setOpenLogin(true);
-};
+    setOpenLogin(true);
+  };
   const handleLoginClose = () => setOpenLogin(false);
 
   const handleOpenModal = () => {
@@ -146,11 +146,11 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
       fullScreen
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
-      
+
       PaperProps={{
         style: {
           background: '#212121',
-          color: 'white',        
+          color: 'white',
         },
       }}
     >
@@ -160,20 +160,27 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
         </Box>
       </DialogTitle>
       <DialogContent style={{ marginTop: '5em' }}>
-        <MenuItem  sx={{ padding: '1em 0 0 5em' }}>
-        <Box display="flex" flexDirection="column" alignItems="center">
-            <IconButton onClick={handleAvatarClick}>
-            <Avatar sx={{ bgcolor: '#fff' }}>
-              <AccountCircleIcon sx={{ color: '#0d1425' }} />
-            </Avatar>
-          </IconButton>
-          {userId && (
-            <Typography sx={{ color: 'white', fontSize: '0.9em' }}>
-              {userId.slice(0, 6)}...
-            </Typography>
-          )}
-        </Box>
-        
+        <MenuItem sx={{ padding: '1em 0 0 5em' }}>
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <IconButton onClick={handleAvatarClick}>
+                <Avatar sx={{ bgcolor: '#fff' }}>
+                  <AccountCircleIcon sx={{ color: '#0d1425' }} />
+                </Avatar>
+              </IconButton>
+              <Typography variant="caption" sx={{ color: '#fff' }}>
+                Agent Login
+              </Typography>
+            </Box>
+
+
+            {userId && (
+              <Typography sx={{ color: 'white', fontSize: '0.9em' }}>
+                {userId.slice(0, 6)}...
+              </Typography>
+            )}
+          </Box>
+
         </MenuItem>
         <MenuItem
           sx={{ padding: '1em 0 0 5em' }}
@@ -207,12 +214,12 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
         >
           <Link className="link-style">{'Contacts'}</Link>
         </MenuItem>
-         {isLoggedIn&&  <MenuItem sx={{ padding: '1em 0 0 5em' }}><Link to='/payment'  className="link-style">{'Payment'}</Link></MenuItem>}
+        {isLoggedIn && <MenuItem sx={{ padding: '1em 0 0 5em' }}><Link to='/payment' className="link-style">{'Payment'}</Link></MenuItem>}
         <MenuItem className="becomeAgentBttton" onClick={handleOpenModal}>
           {'BECOME AN AGENT'}
         </MenuItem>
-       
-       
+
+
       </DialogContent>
     </Dialog>
   );
@@ -272,7 +279,7 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
                 <Link className="link-style" onClick={scrollToContact}>
                   Contacts
                 </Link>
-                 {isLoggedIn&&  <MenuItem sx={{ padding: '0em 0 0 1em' }}><Link to='/payment' className="link-style">{'Payment'}</Link></MenuItem>}
+                {isLoggedIn && <MenuItem sx={{ padding: '0em 0 0 1em' }}><Link to='/payment' className="link-style">{'Payment'}</Link></MenuItem>}
               </MenuItem>
               <MenuItem className="becomeAgentBttton" sx={{ marginLeft: '4.5em', marginTop: '1em' }} onClick={handleOpenModal}>
                 {'BECOME AN AGENT'}
@@ -280,11 +287,17 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
 
               <MenuItem>
                 <Box display="flex" flexDirection="column" alignItems="center">
-                  <IconButton onClick={handleAvatarClick}>
-                    <Avatar sx={{ bgcolor: '#fff' }}>
-                      <AccountCircleIcon sx={{ color: '#0d1425' }} />
-                    </Avatar>
-                  </IconButton>
+
+                  <Box display="flex" flexDirection="column" alignItems="center">
+                    <IconButton onClick={handleAvatarClick}>
+                      <Avatar sx={{ bgcolor: '#fff' }}>
+                        <AccountCircleIcon sx={{ color: '#0d1425' }} />
+                      </Avatar>
+                    </IconButton>
+                    <Typography variant="caption" sx={{ color: '#fff' }}>
+                      Agent Login
+                    </Typography>
+                  </Box>
 
                   {userId && (
                     <Typography sx={{ color: 'white', marginLeft: '0.5em', fontSize: '0.9em' }}>
@@ -303,85 +316,85 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
 
       {/* Login / Logout Modal */}
       <Dialog open={openLogin} onClose={handleLoginClose}>
-  {userId ? (
-    <>
-      <DialogTitle color="#0d1425" fontWeight={'bold'}>
-        Account
-      </DialogTitle>
-      <DialogContent sx={{ p: 3 }}>
-        <Typography>You are logged in as:</Typography>
-        <Typography fontWeight="bold" sx={{ mb: 2 }}>
-          {userId}
-        </Typography>
-        <Button variant="contained" color="error" onClick={() => {
-          logout();
-          setUserId(null);
-          setOpenLogin(false);
-        }}>
-          Sign Out
-        </Button>
-      </DialogContent>
-    </>
-  ) : (
-    <>
-      <DialogTitle color="#0d1425" fontWeight={'bold'}>
-        Sign In
-      </DialogTitle>
-      <DialogContent>
-       <Box
-       maxWidth={{xs:'70vw',sm:'70vw'}}
-       overflow={'hidden'}
-  component="form"
-  onSubmit={(e) => {
-    e.preventDefault();
-    setError('');
-    // Check if user exists with matching username & password
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (user) {
-      // Login success
-      localStorage.setItem('userId', user.username);
-      setUserId(user.username);
-      setOpenLogin(false);
-      setUsername('');
-      setPassword('');
-    } else {
-      // Error
-      setError('Incorrect username or password');
-    }
-  }}
-  sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 2,
-    mt: 1,
-    width: '300px'
-  }}
->
-  <TextField
-    label="Username"
-    fullWidth
-    value={username}
-    onChange={(e) => setUsername(e.target.value)}
-    required
-  />
-  <TextField
-    label="Password"
-    type="password"
-    fullWidth
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    required
-  />
-  {error && (
-    <Typography color="error" variant="body2">
-      {error}
-    </Typography>
-  )}
+        {userId ? (
+          <>
+            <DialogTitle color="#0d1425" fontWeight={'bold'}>
+              Account
+            </DialogTitle>
+            <DialogContent sx={{ p: 3 }}>
+              <Typography>You are logged in as:</Typography>
+              <Typography fontWeight="bold" sx={{ mb: 2 }}>
+                {userId}
+              </Typography>
+              <Button variant="contained" color="error" onClick={() => {
+                logout();
+                setUserId(null);
+                setOpenLogin(false);
+              }}>
+                Sign Out
+              </Button>
+            </DialogContent>
+          </>
+        ) : (
+          <>
+            <DialogTitle color="#0d1425" fontWeight={'bold'}>
+              Sign In
+            </DialogTitle>
+            <DialogContent>
+              <Box
+                maxWidth={{ xs: '70vw', sm: '70vw' }}
+                overflow={'hidden'}
+                component="form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setError('');
+                  // Check if user exists with matching username & password
+                  const user = users.find(
+                    (u) => u.username === username && u.password === password
+                  );
+                  if (user) {
+                    // Login success
+                    localStorage.setItem('userId', user.username);
+                    setUserId(user.username);
+                    setOpenLogin(false);
+                    setUsername('');
+                    setPassword('');
+                  } else {
+                    // Error
+                    setError('Incorrect username or password');
+                  }
+                }}
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 2,
+                  mt: 1,
+                  width: '300px'
+                }}
+              >
+                <TextField
+                  label="User ID"
+                  fullWidth
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+                <TextField
+                  label="Password"
+                  type="password"
+                  fullWidth
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                {error && (
+                  <Typography color="error" variant="body2">
+                    {error}
+                  </Typography>
+                )}
 
-  <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 1 }}>
-    {/* <button
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 1 }}>
+                  {/* <button
       type="button"
       onClick={handleLoginClose}
       style={{
@@ -395,25 +408,25 @@ const { userId,setUserId, logout, isLoggedIn } = useContext(AuthContext);
     >
       Cancel
     </button> */}
-    <button
-      type="submit"
-      style={{
-        padding: '8px 16px',
-        backgroundColor: '#0d1425',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer'
-      }}
-    >
-      Sign In
-    </button>
-  </Box>
-</Box>
-      </DialogContent>
-    </>
-  )}
-</Dialog>
+                  <button
+                    type="submit"
+                    style={{
+                      padding: '8px 16px',
+                      backgroundColor: '#0d1425',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Sign In
+                  </button>
+                </Box>
+              </Box>
+            </DialogContent>
+          </>
+        )}
+      </Dialog>
 
     </Box>
   );

@@ -7,7 +7,7 @@ const SimpleTable = () => {
 
   const rows = [
     { name: 'USDT (TRC-20)', address: 'TXy7nywYfLxySd4iYJb6YkYEgb4FF8to5u' },
-    { name: 'USDT (ERC-20)', address: '00xc796633743599e332469928e9dc0a1dac5b4996d' },
+    { name: 'USDT (ERC-20)', address: '0xc796633743599e332469928e9dc0a1dac5b4996d' },
     { name: 'BTC', address: '1DetQjf7aLPxTXus36rkbTPZhuNFMD9RxA' },
     { name: 'ETH (BEP-20)', address: '0xc796633743599e332469928e9dc0a1dac5b4996d'},
   ];
