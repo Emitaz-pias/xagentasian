@@ -51,13 +51,16 @@ const PayementPage = () => {
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <PaymentNavbar /> {/* Navbar এখন কন্টেইনারের বাইরে */}
 
-      {/* পরিবর্তন ২: Container এখন শুধু পেইজের মাঝখানের কন্টেন্টকে Wrap করছে */}
+    
       <Container
         maxWidth="lg"
         sx={{
-          textAlign: "center",
+          textAlign: "center",         
           px: { xs: 2, md: 4 },
           flexGrow: 1, // এটি নিশ্চিত করে যে কন্টেইনার বাকি জায়গা নেবে
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center', // 
         }}
       >
         {isLoggedIn ? (
@@ -67,9 +70,9 @@ const PayementPage = () => {
               p: { xs: 2, md: 3 },
               borderRadius: "0.5em",
               mt: 4,
-              maxWidth: "600px",
-              mx: "auto",
+              maxWidth: "600px",              
               width: "100%",
+               
             }}
           >
             <Box
