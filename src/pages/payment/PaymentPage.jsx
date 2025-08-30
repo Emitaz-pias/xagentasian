@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PaymentNavbar from './PaymentPageNavbar';
-import Navbar from '../../components/navbar/Navbar';
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import SelectTabs from './Tabs';
 import DepositForm from './DepositForm';
@@ -14,14 +13,13 @@ import {
 import './DepositForm.css';
 import Footer from "../../components/footer/Footer";
 import { AuthContext } from '../../components/authContext/AuthContext';
-import { useContext } from 'react';
+
 const PayementPage = () => {
- const { userId, login, isLoggedIn } = useContext(AuthContext);
+  const { userId, login, isLoggedIn } = useContext(AuthContext);
   const [reveal, setReveal] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState("");
 
- 
   const handleCopyAddress = () => {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard
@@ -48,33 +46,48 @@ const PayementPage = () => {
   };
 
   return (
-    <Container textAlign="center" height="100vh">
-     <PaymentNavbar />
+    <Container
+      maxWidth="lg"
+      sx={{
+        textAlign: "center",
+        minHeight: "100vh",
+        px: { xs: 2, md: 4 },
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <PaymentNavbar />
 
       {isLoggedIn ? (
         <Box
           sx={{
-            backgroundColor: "grey",
-            padding: "0.5em",
-            borderRadius: "0.3em",
-            marginTop: "2em",
+            backgroundColor: "grey.100",
+            p: { xs: 2, md: 3 },
+            borderRadius: "0.5em",
+            mt: 4,
+            maxWidth: "600px",
+            mx: "auto",
+            width: "100%",
           }}
         >
           <Box
-            textAlign={"center"}
             onClick={() => setReveal(!reveal)}
-            sx={{ cursor: "pointer", textDecoration: "underline" }}
-            component={"h4"}
-            color="blue"
+            sx={{
+              cursor: "pointer",
+              textDecoration: "underline",
+              color: "primary.main",
+              fontWeight: 500,
+              mb: 2,
+            }}
           >
             Click To Reveal Wallets
           </Box>
           {reveal ? <SelectTabs /> : <DepositForm />}
         </Box>
       ) : (
-        <h1 style={{ textAlign: "center", marginTop: "5em" }}>
+        <Typography variant="h6" sx={{ mt: 8 }}>
           Please login to access deposit form.
-        </h1>
+        </Typography>
       )}
 
       <Modal
@@ -89,17 +102,20 @@ const PayementPage = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "80vw",
+            width: { xs: "90vw", sm: "70vw", md: "500px" },
             bgcolor: "background.paper",
             boxShadow: 24,
-            p: 4,
+            p: { xs: 2, md: 4 },
             borderRadius: 2,
           }}
         >
           <Typography id="payment-modal-title" variant="h6" component="h5" gutterBottom>
             Payment Address
           </Typography>
-          <Typography id="payment-modal-description">
+          <Typography
+            id="payment-modal-description"
+            sx={{ wordBreak: "break-all" }}
+          >
             {selectedAddress}
             <IconButton onClick={handleCopyAddress}>
               <ContentCopyIcon />
@@ -121,7 +137,9 @@ const PayementPage = () => {
         </Box>
       </Modal>
 
-      <Footer />
+      <Box sx={{ mt: "auto" }}>
+        <Footer />
+      </Box>
     </Container>
   );
 };

@@ -1,74 +1,126 @@
 import React, { useState } from 'react';
-import { Box,Typography, Button, MenuItem  } from '@mui/material';
-import Grid from '@mui/material/Grid2';
-import logo from '../../images/logo.png'
+import { Box, Typography, Button, Grid } from '@mui/material';
+import logo from '../../images/logo.png';
 import { Link } from 'react-router-dom';
-import FormModal from '../../components/modal/FormModal'
-
+import FormModal from '../../components/modal/FormModal';
 
 const Footer = () => {
-  
-  const scrollToBenifits = () => {document.getElementById('benifits').scrollIntoView({ behavior: 'smooth' });};
-  const scrollToConditions = () => {document.getElementById('conditions').scrollIntoView({ behavior: 'smooth' });};
-  const scrollToOppurtunities = () => {document.getElementById('oppurtunitiesSection').scrollIntoView({ behavior: 'smooth' });};
-  const scrollToContact = () => {document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });};
-  
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+  const scrollToBenifits = () =>
+    document.getElementById('benifits')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToConditions = () =>
+    document.getElementById('conditions')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToOppurtunities = () =>
+    document.getElementById('oppurtunitiesSection')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToContact = () =>
+    document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleCloseModal = () => setIsModalOpen(false);
+  const handleOpenModal = () => setIsModalOpen(true);
 
   return (
-    <Box 
+    <Box
       sx={{
-        backgroundColor: '#0c1323', 
-        color: 'white', 
-        padding:{md:'2em',xs:'1em'        },
-        textAlign: 'center',       
+        backgroundColor: '#0c1323',
+        color: 'white',
+        px: { xs: 2, sm: 3, md: 6 },
+        py: { xs: 3, md: 4 },
+        textAlign: 'center',
       }}
     >
-      <Grid container  sx={{textAlign: { xs: 'center'},justifyContent:{md:'space-around'},alignItems:{xs:'center'}}}>
+      <Grid
+        container
+        spacing={3}
+        alignItems="center"
+        justifyContent="space-between"
+      >
         {/* Logo */}
-        <Grid size={{xs:12,sm:12,md:4,lg:4}} >
-          <Box sx={{width:'55%'}}  component='img' src={logo}/>
+        <Grid item xs={12} sm={12} md={4}>
+          <Box
+            component="img"
+            src={logo}
+            alt="logo"
+            sx={{
+              maxWidth: { xs: '140px', sm: '180px', md: '200px' },
+              width: '100%',
+              mx: 'auto',
+            }}
+          />
         </Grid>
-        
-        {/* Links */}
-        <Grid size={{xs:12,sm:12,md:4,lg:4}} >
-          <Grid container spacing={1} justifyContent={{ xs: 'center', md: 'space-around' }}>
-            <Grid >
-            <Typography >    <Link className='link-style' onClick={scrollToBenifits}>Benifits</Link>   </Typography>
 
+        {/* Links */}
+        <Grid item xs={12} sm={12} md={4}>
+          <Grid
+            container
+            spacing={2}
+            justifyContent="center"
+            sx={{ textAlign: 'center' }}
+          >
+            <Grid item>
+              <Typography>
+                <Link className="link-style" onClick={scrollToBenifits}>
+                  Benifits
+                </Link>
+              </Typography>
             </Grid>
-            <Grid >
-            <Typography>    <Link className='link-style' onClick={scrollToConditions}>Conditions</Link>    </Typography>
+            <Grid item>
+              <Typography>
+                <Link className="link-style" onClick={scrollToConditions}>
+                  Conditions
+                </Link>
+              </Typography>
             </Grid>
-            <Grid >
-            <Typography>    <Link className='link-style' onClick={scrollToOppurtunities }> Oppurtunities</Link>   </Typography>
+            <Grid item>
+              <Typography>
+                <Link className="link-style" onClick={scrollToOppurtunities}>
+                  Oppurtunities
+                </Link>
+              </Typography>
             </Grid>
-            <Grid >
-              <Typography>    <Link className='link-style' onClick={scrollToContact}>Contacts</Link>    </Typography>
+            <Grid item>
+              <Typography>
+                <Link className="link-style" onClick={scrollToContact}>
+                  Contacts
+                </Link>
+              </Typography>
             </Grid>
-          </Grid> <br />
-           {/* Copyright & CTA */}
-        <Grid container spacing={2} justifyContent={{ xs: 'center',sm:'center', md: 'flex-end' }}>
-          <Box fontSize='0.7em' component="small">
-            Copyright © 2007-2025 1xbetasian. All rights reserved and protected by law.
+          </Grid>
+
+          {/* Copyright */}
+          <Box
+            sx={{
+              fontSize: '0.75rem',
+              textAlign: { xs: 'center', md: 'right' },
+              mt: 2,
+            }}
+          >
+            © 2007-2025 1xbetasian. All rights reserved and protected by law.
           </Box>
         </Grid>
-        </Grid>
-       
-        <Grid size={{xs:10,sm:12,md:4,lg:4}}>
-        <Button className="becomeAgentBttton" sx={{marginLeft:{md:'1.5em',xs:'2.2em',sm:'2.4em'},marginTop:{sm:'1em',xs:'1em',md:'0'}}} onClick={handleOpenModal} > {'BECOME AN AGENT'}</Button>              
 
+        {/* CTA Button */}
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={4}
+          sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' } }}
+        >
+          <Button
+            className="becomeAgentBttton"
+            onClick={handleOpenModal}
+            sx={{
+              mt: { xs: 2, md: 0 },
+              px: { xs: 3, sm: 4 },
+              py: 1.2,
+            }}
+          >
+            BECOME AN AGENT
+          </Button>
         </Grid>
       </Grid>
-      <FormModal open={isModalOpen} handleClose={handleCloseModal} />
 
+      <FormModal open={isModalOpen} handleClose={handleCloseModal} />
     </Box>
   );
 };

@@ -2,7 +2,7 @@
 import React from "react";
 import { AppBar, Toolbar, Box, IconButton } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import logo from '../../images/logo.png'
+import logo from '../../images/logo.png';
 import { Link } from "react-router-dom";
 const PaymentNavbar = () => {
 
